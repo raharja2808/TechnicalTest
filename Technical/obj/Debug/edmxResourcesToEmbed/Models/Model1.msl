@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TechnicalTestModelStoreContainer" CdmEntityContainer="TechnicalTestEntities">
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="TechnicalTestModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+          <ScalarProperty Name="kode_barang" ColumnName="kode_barang" />
+          <ScalarProperty Name="jumlah_barang" ColumnName="jumlah_barang" />
+          <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_EMPL">
+      <EntityTypeMapping TypeName="TechnicalTestModel.TBL_EMPL">
+        <MappingFragment StoreEntitySet="TBL_EMPL">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE_NAME" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DELETE_PRODUCT" FunctionName="TechnicalTestModel.Store.DELETE_PRODUCT" />
+    <FunctionImportMapping FunctionImportName="INSERT_PRODUCT" FunctionName="TechnicalTestModel.Store.INSERT_PRODUCT" />
+    <FunctionImportMapping FunctionImportName="SEARCH_PRODUCT" FunctionName="TechnicalTestModel.Store.SEARCH_PRODUCT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TechnicalTestModel.SEARCH_PRODUCT_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+          <ScalarProperty Name="kode_barang" ColumnName="kode_barang" />
+          <ScalarProperty Name="jumlah_barang" ColumnName="jumlah_barang" />
+          <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UPDATE_PRODUCT" FunctionName="TechnicalTestModel.Store.UPDATE_PRODUCT" />
+  </EntityContainerMapping>
+</Mapping>

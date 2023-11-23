@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TechnicalTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="nama_barang" />
+      <PropertyRef Name="kode_barang" />
+      <PropertyRef Name="jumlah_barang" />
+      <PropertyRef Name="tanggal" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama_barang" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="kode_barang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="jumlah_barang" Type="Int32" Nullable="false" />
+    <Property Name="tanggal" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="TBL_EMPL">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AGE" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="TechnicalTestEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="TBL_EMPL" EntityType="Self.TBL_EMPL" />
+    <FunctionImport Name="DELETE_PRODUCT">
+      <Parameter Name="KODE_BARANG" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="INSERT_PRODUCT">
+      <Parameter Name="KODE_BARANG" Mode="In" Type="String" />
+      <Parameter Name="NAMA_BARANG" Mode="In" Type="String" />
+      <Parameter Name="JUMLAH_BARANG" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SEARCH_PRODUCT" ReturnType="Collection(TechnicalTestModel.SEARCH_PRODUCT_Result)">
+      <Parameter Name="KODE_BARANG" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UPDATE_PRODUCT">
+      <Parameter Name="KODE_BARANG" Mode="In" Type="String" />
+      <Parameter Name="JUMLAH_BARANG" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SEARCH_PRODUCT_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="nama_barang" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="kode_barang" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="jumlah_barang" Nullable="false" />
+    <Property Type="DateTime" Name="tanggal" Nullable="false" Precision="23" />
+  </ComplexType>
+</Schema>

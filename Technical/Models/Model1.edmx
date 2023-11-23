@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TechnicalTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TechnicalTest.dbo.product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="nama_barang" />
+            <PropertyRef Name="kode_barang" />
+            <PropertyRef Name="jumlah_barang" />
+            <PropertyRef Name="tanggal" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nama_barang" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="kode_barang" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="jumlah_barang" Type="int" Nullable="false" />
+          <Property Name="tanggal" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TechnicalTest.dbo.TBL_DEPT' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TBL_DEPT">
+          <Property Name="DEPARTMENT_ID" Type="int" />
+          <Property Name="DEPARTMENT_NAME" Type="nvarchar(max)" />
+          <Property Name="MINIMUM_SALARY" Type="money" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TechnicalTest.dbo.TBL_EMPL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TBL_EMPL">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMPLOYEE_NAME" Type="nvarchar(max)" />
+          <Property Name="AGE" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TechnicalTest.dbo.TBL_EMPL_DEPT' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TBL_EMPL_DEPT">
+          <Property Name="EMPLOYEE_ID" Type="int" />
+          <Property Name="DEPARTEMENT_ID" Type="int" />
+        </EntityType>-->
+        <Function Name="DELETE_PRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KODE_BARANG" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="INSERT_PRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KODE_BARANG" Type="varchar" Mode="In" />
+          <Parameter Name="NAMA_BARANG" Type="varchar" Mode="In" />
+          <Parameter Name="JUMLAH_BARANG" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SEARCH_PRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KODE_BARANG" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UPDATE_PRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KODE_BARANG" Type="varchar" Mode="In" />
+          <Parameter Name="JUMLAH_BARANG" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="TechnicalTestModelStoreContainer">
+          <EntitySet Name="product" EntityType="Self.product" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [product].[id] AS [id], 
+    [product].[nama_barang] AS [nama_barang], 
+    [product].[kode_barang] AS [kode_barang], 
+    [product].[jumlah_barang] AS [jumlah_barang], 
+    [product].[tanggal] AS [tanggal]
+    FROM [dbo].[product] AS [product]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TBL_EMPL" EntityType="Self.TBL_EMPL" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TBL_EMPL].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+    [TBL_EMPL].[EMPLOYEE_NAME] AS [EMPLOYEE_NAME], 
+    [TBL_EMPL].[AGE] AS [AGE]
+    FROM [dbo].[TBL_EMPL] AS [TBL_EMPL]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TechnicalTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="nama_barang" />
+            <PropertyRef Name="kode_barang" />
+            <PropertyRef Name="jumlah_barang" />
+            <PropertyRef Name="tanggal" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nama_barang" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kode_barang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="jumlah_barang" Type="Int32" Nullable="false" />
+          <Property Name="tanggal" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TBL_EMPL">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AGE" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="TechnicalTestEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="TBL_EMPL" EntityType="Self.TBL_EMPL" />
+          <FunctionImport Name="DELETE_PRODUCT">
+            <Parameter Name="KODE_BARANG" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="INSERT_PRODUCT">
+            <Parameter Name="KODE_BARANG" Mode="In" Type="String" />
+            <Parameter Name="NAMA_BARANG" Mode="In" Type="String" />
+            <Parameter Name="JUMLAH_BARANG" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SEARCH_PRODUCT" ReturnType="Collection(TechnicalTestModel.SEARCH_PRODUCT_Result)">
+            <Parameter Name="KODE_BARANG" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATE_PRODUCT">
+            <Parameter Name="KODE_BARANG" Mode="In" Type="String" />
+            <Parameter Name="JUMLAH_BARANG" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SEARCH_PRODUCT_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nama_barang" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="kode_barang" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="jumlah_barang" Nullable="false" />
+          <Property Type="DateTime" Name="tanggal" Nullable="false" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TechnicalTestModelStoreContainer" CdmEntityContainer="TechnicalTestEntities">
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="TechnicalTestModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+                <ScalarProperty Name="kode_barang" ColumnName="kode_barang" />
+                <ScalarProperty Name="jumlah_barang" ColumnName="jumlah_barang" />
+                <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_EMPL">
+            <EntityTypeMapping TypeName="TechnicalTestModel.TBL_EMPL">
+              <MappingFragment StoreEntitySet="TBL_EMPL">
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+                <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE_NAME" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DELETE_PRODUCT" FunctionName="TechnicalTestModel.Store.DELETE_PRODUCT" />
+          <FunctionImportMapping FunctionImportName="INSERT_PRODUCT" FunctionName="TechnicalTestModel.Store.INSERT_PRODUCT" />
+          <FunctionImportMapping FunctionImportName="SEARCH_PRODUCT" FunctionName="TechnicalTestModel.Store.SEARCH_PRODUCT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TechnicalTestModel.SEARCH_PRODUCT_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+                <ScalarProperty Name="kode_barang" ColumnName="kode_barang" />
+                <ScalarProperty Name="jumlah_barang" ColumnName="jumlah_barang" />
+                <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UPDATE_PRODUCT" FunctionName="TechnicalTestModel.Store.UPDATE_PRODUCT" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

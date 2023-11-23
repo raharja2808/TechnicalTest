@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TechnicalTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TechnicalTest.dbo.product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="nama_barang" />
+      <PropertyRef Name="kode_barang" />
+      <PropertyRef Name="jumlah_barang" />
+      <PropertyRef Name="tanggal" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama_barang" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="kode_barang" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="jumlah_barang" Type="int" Nullable="false" />
+    <Property Name="tanggal" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'TechnicalTest.dbo.TBL_DEPT' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TBL_DEPT">
+          <Property Name="DEPARTMENT_ID" Type="int" />
+          <Property Name="DEPARTMENT_NAME" Type="nvarchar(max)" />
+          <Property Name="MINIMUM_SALARY" Type="money" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TechnicalTest.dbo.TBL_EMPL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TBL_EMPL">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EMPLOYEE_NAME" Type="nvarchar(max)" />
+    <Property Name="AGE" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'TechnicalTest.dbo.TBL_EMPL_DEPT' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TBL_EMPL_DEPT">
+          <Property Name="EMPLOYEE_ID" Type="int" />
+          <Property Name="DEPARTEMENT_ID" Type="int" />
+        </EntityType>-->
+  <Function Name="DELETE_PRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="KODE_BARANG" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="INSERT_PRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="KODE_BARANG" Type="varchar" Mode="In" />
+    <Parameter Name="NAMA_BARANG" Type="varchar" Mode="In" />
+    <Parameter Name="JUMLAH_BARANG" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SEARCH_PRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="KODE_BARANG" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UPDATE_PRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="KODE_BARANG" Type="varchar" Mode="In" />
+    <Parameter Name="JUMLAH_BARANG" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="TechnicalTestModelStoreContainer">
+    <EntitySet Name="product" EntityType="Self.product" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [product].[id] AS [id], 
+    [product].[nama_barang] AS [nama_barang], 
+    [product].[kode_barang] AS [kode_barang], 
+    [product].[jumlah_barang] AS [jumlah_barang], 
+    [product].[tanggal] AS [tanggal]
+    FROM [dbo].[product] AS [product]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TBL_EMPL" EntityType="Self.TBL_EMPL" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TBL_EMPL].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+    [TBL_EMPL].[EMPLOYEE_NAME] AS [EMPLOYEE_NAME], 
+    [TBL_EMPL].[AGE] AS [AGE]
+    FROM [dbo].[TBL_EMPL] AS [TBL_EMPL]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
